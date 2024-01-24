@@ -1,0 +1,4 @@
+[console_scripts]
+CryptoClient = CryptoClient:main
+CryptoLibrary = CryptoLibrary:main
+

@@ -1,0 +1,18 @@
+1706007568650	geckodriver	INFO	Listening on 127.0.0.1:58325
+1706007569161	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/usr ... te" "--remote-debugging-port" "44441" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileilR75i"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1706007569564	Marionette	INFO	Marionette enabled
+1706007569662	Marionette	INFO	Listening on port 35899
+WebDriver BiDi listening on ws://127.0.0.1:44441
+Read port: 35899
+1706007569818	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.error: ({})
+DevTools listening on ws://127.0.0.1:44441/devtools/browser/c6ee88a5-384d-4fe2-ad2c-df70537187d3
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.esic.in."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.esic.in."
+JavaScript warning: https://www.esic.in/InsuranceGlobalWebV3/ESICInsurancePortal/logoutjquery.min.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript error: https://www.esic.in/InsuranceGlobalWebV3/RevenueOne/Monthly%20Contribution/MonthlyContributionHome.aspx?userPk=WMoSpjgJ/2mESaSQP7EOKp+15Y1mmmfB, line 47: ReferenceError: getdate is not defined
+JavaScript error: https://www.esic.in/InsuranceGlobalWebV3/RevenueOne/Monthly%20Contribution/MonthlyContributionHome.aspx?userPk=WMoSpjgJ/2mESaSQP7EOKp+15Y1mmmfB, line 512: TypeError: Range.setStartBefore: Argument 1 is not an object.
+1706007600557	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+1706007708544	Marionette	INFO	Stopped listening on port 35899

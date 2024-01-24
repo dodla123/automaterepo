@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESIC Automation Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+</head>
+<body>
+
+    <div class="text-center mt-5">
+        <h1>Start Your ESIC Sript!</h1>
+        <button class="btn mt-4 btn-success" id="runButton">Start ESIC Automation</button>
+        <div class="row">
+            <div class="col-4">
+            </div>
+            <div id="result" class="mt-5 text-center">
+            </div>
+            <div class="col-4">
+    
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
+
+<script>
+    $(document).ready(function() {
+        $("#runButton").click(function() {
+            $.ajax({
+                type: "POST",
+                url: "/run_robot",
+                success: function(data) {
+                    var tableHtml = "<h2>Robot Framework Log Paths:</h2><table class='table table-bordered'><tr><th>File Name</th><th>Link</th></tr>";
+
+                    // Iterate through the keys (file names) in the dictionary
+                    for (var fileName in data.log_paths) {
+                        if (data.log_paths.hasOwnProperty(fileName)) {
+                            var filePath = data.log_paths[fileName];
+                            var link = "<a href='" + filePath + "' _target='new'>" + fileName + "</a>";
+                            tableHtml += "<tr><td>" + fileName + "</td><td>" + link + "</td></tr>";
+                        }
+                    }
+
+                    tableHtml += "</table>";
+                    $("#result").html(tableHtml);
+                },
+                error: function(error) {
+                    console.log("Error:", error);
+                }
+            });
+        });
+    });
+</script>

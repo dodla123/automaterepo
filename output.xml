@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.6 on linux)" generated="20240124 14:25:33.876" rpa="false" schemaversion="4">
+<suite id="s1" name="Practise" source="/home/buzzadmin/Documents/ESIC_BOT/login/practise.robot">
+<test id="s1-t1" name="Automate EPFO Webpage" line="58">
+<kw name="Open EPF India Website">
+<kw name="Open Browser" library="RPA.Browser.Selenium">
+<arg>https://www.epfindia.gov.in/site_en/index.php#</arg>
+<arg>chrome</arg>
+<arg>options=add_experimental_option("detach", True)</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240124 14:25:34.035" level="INFO">Opening browser 'chrome' to base url 'https://www.epfindia.gov.in/site_en/index.php#'.</msg>
+<status status="PASS" starttime="20240124 14:25:34.033" endtime="20240124 14:25:37.322"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="RPA.Browser.Selenium">
+<arg>xpath://*[@id="ecr_panel_1"]</arg>
+<arg>timeout=30</arg>
+<arg>error=Unable to launch EPF website</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240124 14:25:37.323" endtime="20240124 14:25:37.352"/>
+</kw>
+<status status="PASS" starttime="20240124 14:25:34.033" endtime="20240124 14:25:37.352"/>
+</kw>
+<kw name="Click ECR/Returns/Payment Button">
+<kw name="Click Element When Visible" library="RPA.Browser.Selenium">
+<arg>xpath://*[@id="ecr_panel_1"]</arg>
+<doc>Click element identified by ``locator``, once it becomes visible.</doc>
+<msg timestamp="20240124 14:25:37.365" level="INFO">Clicking element 'xpath://*[@id="ecr_panel_1"]'.</msg>
+<status status="PASS" starttime="20240124 14:25:37.352" endtime="20240124 14:25:37.399"/>
+</kw>
+<kw name="Switch Window" library="RPA.Browser.Selenium">
+<arg>EPFO: Home</arg>
+<arg>timeout=30s</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20240124 14:25:37.399" endtime="20240124 14:25:38.152"/>
+</kw>
+<kw name="Maximize Browser Window" library="RPA.Browser.Selenium">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20240124 14:25:38.152" endtime="20240124 14:25:38.288"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="RPA.Browser.Selenium">
+<arg>xpath://*[@id="btnCloseModal"]</arg>
+<arg>timeout=30s</arg>
+<arg>error=Unable to find Alert Popup</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240124 14:25:38.288" endtime="20240124 14:25:38.311"/>
+</kw>
+<status status="PASS" starttime="20240124 14:25:37.352" endtime="20240124 14:25:38.311"/>
+</kw>
+<kw name="Accept Popup">
+<kw name="Click Button When Visible" library="RPA.Browser.Selenium">
+<arg>xpath://*[@id="btnCloseModal"]</arg>
+<doc>Click button identified by ``locator``, once it becomes visible.</doc>
+<msg timestamp="20240124 14:25:38.330" level="INFO">Clicking button 'xpath://*[@id="btnCloseModal"]'.</msg>
+<status status="PASS" starttime="20240124 14:25:38.311" endtime="20240124 14:25:38.376"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Opened EPFO login page</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240124 14:25:38.376" level="INFO">Opened EPFO login page</msg>
+<status status="PASS" starttime="20240124 14:25:38.376" endtime="20240124 14:25:38.376"/>
+</kw>
+<status status="PASS" starttime="20240124 14:25:38.311" endtime="20240124 14:25:38.376"/>
+</kw>
+<kw name="Enter Username and Password">
+<kw name="Wait Until Element Is Visible" library="RPA.Browser.Selenium">
+<arg>xpath://*[@id="username"]</arg>
+<arg>timeout=30s</arg>
+<arg>error=Unable to find username input</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240124 14:25:38.377" endtime="20240124 14:25:38.392"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>xpath://*[@id="username"]</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240124 14:25:38.392" level="INFO">Typing text 'BUZZWORKS2012' into text field 'xpath://*[@id="username"]'.</msg>
+<status status="PASS" starttime="20240124 14:25:38.392" endtime="20240124 14:25:38.455"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>xpath://*[@id="password"]</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240124 14:25:38.455" level="INFO">Typing text 'Bu$$2023Work$' into text field 'xpath://*[@id="password"]'.</msg>
+<status status="PASS" starttime="20240124 14:25:38.455" endtime="20240124 14:25:38.509"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Entered username and password</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240124 14:25:38.509" level="INFO">Entered username and password</msg>
+<status status="PASS" starttime="20240124 14:25:38.509" endtime="20240124 14:25:38.509"/>
+</kw>
+<status status="PASS" starttime="20240124 14:25:38.377" endtime="20240124 14:25:38.509"/>
+</kw>
+<kw name="Click Signin Button">
+<kw name="Click Button When Visible" library="RPA.Browser.Selenium">
+<arg>//button[@class='btn btn-success btn-logging']</arg>
+<doc>Click button identified by ``locator``, once it becomes visible.</doc>
+<msg timestamp="20240124 14:25:38.522" level="INFO">Clicking button '//button[@class='btn btn-success btn-logging']'.</msg>
+<status status="PASS" starttime="20240124 14:25:38.510" endtime="20240124 14:25:38.999"/>
+</kw>
+<status status="PASS" starttime="20240124 14:25:38.510" endtime="20240124 14:25:38.999"/>
+</kw>
+<kw name="Click Element When Visible" library="RPA.Browser.Selenium">
+<arg>//*[contains(@class, 'dropdown-toggle') and contains(text(), 'Member')]</arg>
+<doc>Click element identified by ``locator``, once it becomes visible.</doc>
+<msg timestamp="20240124 14:25:39.013" level="INFO">Clicking element '//*[contains(@class, 'dropdown-toggle') and contains(text(), 'Member')]'.</msg>
+<status status="PASS" starttime="20240124 14:25:38.999" endtime="20240124 14:25:39.043"/>
+</kw>
+<kw name="Click Element When Visible" library="RPA.Browser.Selenium">
+<arg>//ul[@class='dropdown-menu m1']//a[text()='REGISTER-INDIVIDUAL']</arg>
+<doc>Click element identified by ``locator``, once it becomes visible.</doc>
+<msg timestamp="20240124 14:25:39.057" level="INFO">Clicking element '//ul[@class='dropdown-menu m1']//a[text()='REGISTER-INDIVIDUAL']'.</msg>
+<status status="PASS" starttime="20240124 14:25:39.043" endtime="20240124 14:25:39.562"/>
+</kw>
+<kw name="Amount Extraction">
+<kw name="Wait Until Element Is Visible" library="RPA.Browser.Selenium">
+<arg>xpath://*[@id="nationality"]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240124 14:25:39.562" endtime="20240124 14:25:39.576"/>
+</kw>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${text}</var>
+<arg>xpath://*[@id="nationality"]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240124 14:25:39.603" level="INFO">${text} =             INDIAN
+            Afghan
+Albanian
+Algerian
+Andorran
+Angolan
+of Antigua and Barbuda
+Argentinian
+Armenian
+Australian
+Austrian
+Azerbaijani
+Bahamian
+Bahraini
+Bangladeshi
+Barbadian
+Belarusian¿...</msg>
+<status status="PASS" starttime="20240124 14:25:39.576" endtime="20240124 14:25:39.603"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240124 14:25:39.603" level="INFO">            INDIAN
+            Afghan
+Albanian
+Algerian
+Andorran
+Angolan
+of Antigua and Barbuda
+Argentinian
+Armenian
+Australian
+Austrian
+Azerbaijani
+Bahamian
+Bahraini
+Bangladeshi
+Barbadian
+Belarusian¿¿or¿¿Belarusan
+Belgian
+Belizean
+Beninese
+Bhutanese
+Bolivian
+Bosnian
+Botswanan
+Brazilian
+Bruneian
+Bulgarian
+Burkinese
+Burundian
+Cambodian
+Cameroonian
+Canadian
+Cape Verdean
+Central African
+Chadian
+Chilean
+Chinese
+Colombian
+Comorian
+Congolese
+Costa Rican
+Ivoirian
+Croat¿¿or¿¿Croatian
+Cuban
+Cypriot
+Czech
+Danish
+Djiboutian
+Dominican
+Dominican
+Ecuadorean
+Egyptian
+Salvadorean
+Equatorial Guinean
+Eritrean
+Estonian
+Ethiopian
+Fijian
+Finnish
+French
+Gabonese
+Gambian
+Georgian
+German
+Ghanaian
+Greek
+Grenadian
+Guatemalan
+Guinean
+Guinean
+Guyanese
+Haitian
+Honduran
+Hungarian
+Icelandic
+Indian
+Indonesian
+Iranian
+Iraqi
+Irish
+Israeli
+Italian
+Jamaican
+Japanese
+Jordanian
+Kazakh
+Kenyan
+Kiribati
+Kuwaiti
+Kyrgyzstani
+LAOS
+Latvian
+Lebanese
+Mosotho
+Liberian
+Libyan
+Liechtensteiner
+Lithuanian
+Luxembourger
+Malagasy¿¿or¿¿Madagascan
+Malawian
+Malaysian
+Maldivian
+Malian
+Maltese
+Marshallese
+Mauritanian
+Mauritian
+Mexican
+Mon¿¿gasque¿¿or¿¿Monacan
+Mongolian
+Moroccan
+Mozambican
+Burmese
+Namibian
+Nauruan
+Nepalese
+Dutch
+New Zealander
+Nicaraguan
+Nigerien
+Nigerian
+Norwegian
+Omani
+Pakistani
+Palauans
+Panamanian
+Papua New Guinean¿¿or¿¿Guinean
+Paraguayan
+Peruvian
+Philippine
+Polish
+Portuguese
+Qatari
+Quèbècois
+Korean
+Moldovan
+Romanian
+Russian
+Rwandan
+Nevisian
+St. Lucian
+SAMOAN
+Sammarinese
+Sao Tomean
+Saudi Arabian¿¿or¿¿Saudi
+Senegalese
+Serb¿¿or¿¿Serbian
+Seychellois
+Sierra Leonian
+Singaporean
+Slovak
+Slovene¿¿or¿¿Slovenian
+Solomon Islander
+Somali
+South African
+Spanish
+Sri Lankan
+Sudanese
+Surinamese
+Swazi
+Swedish
+Swiss
+Syrian
+Taiwanese
+Tajik¿¿or¿¿Tadjik
+Thai
+Timorese
+Togolese
+Tongan
+Trinidadian
+Tunisian
+Turkish
+Turkmen¿¿or¿¿Turkoman
+Tuvaluan
+Ugandan
+Ukrainian
+Emirian
+Briton
+Tanzanian
+American
+Uruguayan
+Uzbek
+Vanuatuan
+Vanticanien.
+Venezuelan
+Vietnamese
+Yemeni
+Zambian
+Zimbabwean
+        </msg>
+<status status="PASS" starttime="20240124 14:25:39.603" endtime="20240124 14:25:39.603"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>id=fatherHusbandName</arg>
+<arg>${text}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240124 14:25:39.603" level="INFO">Typing text '            INDIAN
+            Afghan
+Albanian
+Algerian
+Andorran
+Angolan
+of Antigua and Barbuda
+Argentinian
+Armenian
+Australian
+Austrian
+Azerbaijani
+Bahamian
+Bahraini
+Bangladeshi
+Barbadian
+Belarusian¿¿or¿¿Belarusan
+Belgian
+Belizean
+Beninese
+Bhutanese
+Bolivian
+Bosnian
+Botswanan
+Brazilian
+Bruneian
+Bulgarian
+Burkinese
+Burundian
+Cambodian
+Cameroonian
+Canadian
+Cape Verdean
+Central African
+Chadian
+Chilean
+Chinese
+Colombian
+Comorian
+Congolese
+Costa Rican
+Ivoirian
+Croat¿¿or¿¿Croatian
+Cuban
+Cypriot
+Czech
+Danish
+Djiboutian
+Dominican
+Dominican
+Ecuadorean
+Egyptian
+Salvadorean
+Equatorial Guinean
+Eritrean
+Estonian
+Ethiopian
+Fijian
+Finnish
+French
+Gabonese
+Gambian
+Georgian
+German
+Ghanaian
+Greek
+Grenadian
+Guatemalan
+Guinean
+Guinean
+Guyanese
+Haitian
+Honduran
+Hungarian
+Icelandic
+Indian
+Indonesian
+Iranian
+Iraqi
+Irish
+Israeli
+Italian
+Jamaican
+Japanese
+Jordanian
+Kazakh
+Kenyan
+Kiribati
+Kuwaiti
+Kyrgyzstani
+LAOS
+Latvian
+Lebanese
+Mosotho
+Liberian
+Libyan
+Liechtensteiner
+Lithuanian
+Luxembourger
+Malagasy¿¿or¿¿Madagascan
+Malawian
+Malaysian
+Maldivian
+Malian
+Maltese
+Marshallese
+Mauritanian
+Mauritian
+Mexican
+Mon¿¿gasque¿¿or¿¿Monacan
+Mongolian
+Moroccan
+Mozambican
+Burmese
+Namibian
+Nauruan
+Nepalese
+Dutch
+New Zealander
+Nicaraguan
+Nigerien
+Nigerian
+Norwegian
+Omani
+Pakistani
+Palauans
+Panamanian
+Papua New Guinean¿¿or¿¿Guinean
+Paraguayan
+Peruvian
+Philippine
+Polish
+Portuguese
+Qatari
+Quèbècois
+Korean
+Moldovan
+Romanian
+Russian
+Rwandan
+Nevisian
+St. Lucian
+SAMOAN
+Sammarinese
+Sao Tomean
+Saudi Arabian¿¿or¿¿Saudi
+Senegalese
+Serb¿¿or¿¿Serbian
+Seychellois
+Sierra Leonian
+Singaporean
+Slovak
+Slovene¿¿or¿¿Slovenian
+Solomon Islander
+Somali
+South African
+Spanish
+Sri Lankan
+Sudanese
+Surinamese
+Swazi
+Swedish
+Swiss
+Syrian
+Taiwanese
+Tajik¿¿or¿¿Tadjik
+Thai
+Timorese
+Togolese
+Tongan
+Trinidadian
+Tunisian
+Turkish
+Turkmen¿¿or¿¿Turkoman
+Tuvaluan
+Ugandan
+Ukrainian
+Emirian
+Briton
+Tanzanian
+American
+Uruguayan
+Uzbek
+Vanuatuan
+Vanticanien.
+Venezuelan
+Vietnamese
+Yemeni
+Zambian
+Zimbabwean
+        ' into text field 'id=fatherHusbandName'.</msg>
+<status status="PASS" starttime="20240124 14:25:39.603" endtime="20240124 14:25:40.034"/>
+</kw>
+<status status="PASS" starttime="20240124 14:25:39.562" endtime="20240124 14:25:40.034"/>
+</kw>
+<status status="PASS" starttime="20240124 14:25:34.033" endtime="20240124 14:25:40.034"/>
+</test>
+<status status="PASS" starttime="20240124 14:25:33.876" endtime="20240124 14:25:40.034"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Practise">Practise</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

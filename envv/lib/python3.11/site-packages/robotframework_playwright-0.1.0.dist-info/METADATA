@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: robotframework-playwright
+Version: 0.1.0
+Summary: 
+Home-page: https://github.com/mkorpela/robotframework-playwright
+License: Apache-2.0
+Author: Mikko Korpela
+Author-email: mikko.korpela@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: Development Status :: 1 - Planning
+Classifier: Framework :: Robot Framework
+Classifier: Framework :: Robot Framework :: Library
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Software Development :: Testing
+Project-URL: Repository, https://github.com/mkorpela/robotframework-playwright
+Description-Content-Type: text/markdown
+
+# robotframework-playwright
+
+Robot Framework Playwright library
+
+# Development
+
+- https://www.python.org/downloads/
+- `python -m pip install poetry`
+- https://nodejs.org/
+- https://classic.yarnpkg.com/en/docs/install
+
+Install `yarn install` and `poetry install`.
+
+Run robot framework tests `poetry run robot atest`.
+Run pytests `poetry run pytest`.
+

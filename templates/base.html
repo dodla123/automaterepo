@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <title>ESIC Automation</title>
+    <style>
+        body {
+            padding-top: 56px;
+        }
+
+        #drag-and-drop {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #file-input {
+            display: none;
+        }
+    </style>
+    
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light nav-tabs fixed-top" style="background-color: ghostwhite;">
+    <a class="navbar-brand" href="#">Buzzworks</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active normal_nav_link" id="home">
+                <a class="nav-link" href="#">ESIC Remittance</a>
+            </li>
+            <li class="nav-item normal_nav_link" id="uan_gen">
+                <a class="nav-link" href="#">MC_TEMPLETE UPLOAD</a>
+            </li>
+            <li class="nav-item normal_nav_link" id="about">
+                <a class="nav-link" href="#">About Us</a>
+            </li>
+            <li class="nav-item normal_nav_link" id="waste_lachimi">
+                <a class="nav-link" href="#">Waste lachimi</a>
+            </li>
+            <li class="nav-item normal_nav_link" id="waste_meena">
+                <a class="nav-link" href="#">Waste Meena</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-5">
+    <!-- Home Section -->
+    <div id="home_div" class="mb-4 nav_section_div">
+        <form>
+            <div class="form-group">
+
+                <div class='row pt-5'>
+                    <div class='col-4'>
+                        
+                    </div>
+                    <div class='col-4 text-center'>
+                        <div for='file-input' id="drag-and-drop" onclick="triggerFileInput()" style='height:200px'>
+                            <p class=" text-center mt-5" for='file-input' >Upload MC_TEMPLETE file here</p>
+                        </div>
+                        <button type="submit" id="runButton" class="btn mt-2 text-center btn-primary">Submit</button>
+                        <input type="file" id="file-input" class="form-control" onchange="displaySelectedFile()">
+                    </div>
+                    <div class='col-4'>
+                        
+                    </div>
+
+
+
+                </div>
+
+                <div class="row">
+                    <div class="col-4">
+                    </div>
+                    <div id="result" class="mt-5 text-center">
+                    </div>
+                    <div class="col-4">    
+                    </div>
+                </div>
+
+               
+                
+            </div>
+        </form>
+    </div>
+
+    <!-- Reports Section -->
+    <div id="uan_gen_div" class='d-none nav_section_div'>
+        <h2 class="text-center">FILE UPLOAD</h2>
+        <form>
+            <div class="form-group">
+                <div class='row pt-5'>
+                    <div class='col-4'>
+                    </div>
+                    <div class='col-4 text-center'>
+                        <div for='file-input' id="drag-and-drop" onclick="triggerFileInput()" style='height:200px'>
+                            <p class=" text-center mt-5" for='file-input' >Upload location wise file here</p>
+                        </div>
+                        <button type="button" onclick="uploadFile()" class="btn mt-2 text-center btn-primary">Submit</button>
+                        <input type="file" id="file-input" class="form-control" onchange="displaySelectedFile()">
+                    </div>
+                    <div class='col-4'>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div id="waste_lachimi_div" class='d-none nav_section_div'>
+        <main>
+            <section>
+                <form action="" id="signin-form">
+                    <fieldset>
+                        <legend>Sign Into Your Account</legend>
+                        
+                        <label for="email-input">Your email</label>
+                        <input type="email" name="email-input" id="email-input" placeholder="user@example.com">
+                        
+                        <label for="password-input">Your password</label>
+                        <input type="password" name="password-input" id="password-input" placeholder="•••••••">
+                    
+                        <p><small>Don't remember your password? <a href="#">Reset it</a>.</small></p>
+                        
+                        <input type="checkbox" name="remember-me-input" id="remember-me-input">
+                        <label for="remember-me-input">Remember me</label>
+                    </fieldset>
+                    
+                    <input type="submit" value="Sign in">
+                </form>
+                
+                <p class="center lead">Don't have an account? <a href="#">Sign up</a>.</p>
+            </section>
+        </main>
+    </div>
+
+    <div id="waste_meena_div" class='d-none nav_section_div'>
+        Hello Waste Meeenakshiiiiii
+
+        <a id="waste_meena_click" class="btn btn-success waste_meena_click"  value="click here">CLICK HERE</a>
+    </div>
+
+</div>
+
+
+<!-- <table class="table table-bordered" id="dataTable">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+             Add more columns as needed -->
+        <!-- </tr>
+    </thead>
+    <tbody> -->
+        <!-- Add data rows dynamically -->
+    <!-- </tbody>
+</table> --> 
+<!-- Bootstrap JS and Popper.js (required for Bootstrap) -->
+<!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
+
+<!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+-->
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+
+<script>
+    function uploadFile() {
+        var fileInput = document.getElementById('file-input');
+        var file = fileInput.files[0];
+
+        if (file) {
+            var formData = new FormData();
+            formData.append('file', file);
+
+            $.ajax({
+                type: 'POST',
+                url: '/run_generate_uan',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    // Handle success response from the server
+                    console.log(response);
+                },
+                error: function (error) {
+                    // Handle error response from the server
+                    console.error(error);
+                }
+            });
+        } else {
+            alert('Please select a file before submitting.');
+        }
+    }
+
+</script>
+
+<script>
+    // Initialize DataTable
+    $(document).ready(function() {
+        $('#dataTable').DataTable();
+    });
+
+
+
+    $(document).on('click','.normal_nav_link',function(){
+        $('.normal_nav_link').removeClass('active')
+        $(this).addClass('active')
+        $('.nav_section_div').addClass('d-none')
+        ths_id = $(this).attr('id')
+        console.log(ths_id,'ths_idths_id')
+        main_id = '#' + ths_id + '_div'
+        $(main_id).removeClass('d-none')
+
+    })
+
+    $(document).on('click','#waste_meena_click',function(){
+        
+        $.ajax({
+                type: "POST",
+                url: "/wastemeena_call",
+                data:{'Data':'lachimi'},
+                success: function(data) {
+
+                    console.log('AAAAAAAAAAAAAA')
+
+                }
+            })
+    })
+    
+
+    function triggerFileInput() {
+        document.getElementById('file-input').click();
+    }
+
+    // Display the selected file name
+    function displaySelectedFile() {
+        const fileInput = document.getElementById('file-input');
+        const dragAndDropArea = document.getElementById('drag-and-drop');
+        const fileName = fileInput.files[0].name;
+        dragAndDropArea.innerHTML = `<p class='text-center mt-5'>Selected File: <span class='text-primary'>${fileName}</span> </p>`;
+    }
+
+   
+</script>
+
+<script>
+    $(document).ready(function() {
+
+
+        
+
+
+
+
+        $("#runButton").click(function() {
+            $.ajax({
+                type: "POST",
+                url: "/run_robot",
+                success: function(data) {
+                    var tableHtml = "<h2>Robot Framework Log Paths:</h2><table class='table table-bordered'><tr><th>File Name</th><th>Link</th></tr>";
+
+                    // Iterate through the keys (file names) in the dictionary
+                    for (var fileName in data.log_paths) {
+                        console.log(fileName,'fileNamefileNamefileName')
+                        if (data.log_paths.hasOwnProperty(fileName)) {
+                            var filePath = data.log_paths[fileName];
+                            var link = "<a href='" + filePath + "' _target='new'>" + fileName + "</a>";
+                            tableHtml += "<tr><td>" + fileName + "</td><td>" + link + "</td></tr>";
+                        }
+                    }
+
+                    tableHtml += "</table>";
+                    console.log(tableHtml,'tableHtmltableHtml')
+                    $("#result").html(tableHtml);
+                },
+                error: function(error) {
+                    console.log("Error:", error);
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
