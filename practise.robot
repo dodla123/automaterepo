@@ -1,22 +1,22 @@
-*** Settings ***
-Library    RPA.Browser.Selenium    auto_close=${False}
-Library    Collections
-Library    OperatingSystem
-Library    String
-Library    RPA.Desktop
-Library    RPA.JSON
-*** Variables ***
-${excel_file_path}    /home/buzzadmin/Downloads/UAN.xlsx
-${username}           BUZZWORKS2012
-${password}           Bu$$2023Work$
-*** Keywords ***
-Open EPF India Website
-    Open Browser    https://www.epfindia.gov.in/site_en/index.php#    chrome    options=add_experimental_option("detach", True)    
-    Wait Until Element Is Visible    xpath://*[@id="ecr_panel_1"]    timeout=30    error=Unable to launch EPF website
+# *** Settings ***
+# Library    RPA.Browser.Selenium    auto_close=${False}
+# Library    Collections
+# Library    OperatingSystem
+# Library    String
+# Library    RPA.Desktop
+# Library    RPA.JSON
+# *** Variables ***
+# ${excel_file_path}    /home/buzzadmin/Downloads/UAN.xlsx
+# ${username}           BUZZWORKS2012
+# ${password}           Bu$$2023Work$
+# *** Keywords ***
+# Open EPF India Website
+#     Open Browser    https://www.epfindia.gov.in/site_en/index.php#    chrome    options=add_experimental_option("detach", True)    
+#     Wait Until Element Is Visible    xpath://*[@id="ecr_panel_1"]    timeout=30    error=Unable to launch EPF website
 
-Click ECR/Returns/Payment Button
-    Click Element When Visible    xpath://*[@id="ecr_panel_1"]
-    Switch Window    EPFO: Home    timeout=30s
+# Click ECR/Returns/Payment Button
+#     Click Element When Visible    xpath://*[@id="ecr_panel_1"]
+#     Switch Window    EPFO: Home    timeout=30s
     Maximize Browser Window
     Wait Until Element Is Visible    xpath://*[@id="btnCloseModal"]    timeout=30s    error=Unable to find Alert Popup
 
