@@ -1,0 +1,35 @@
+1707209256400	geckodriver	INFO	Listening on 127.0.0.1:57109
+1707209256910	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/usr ... te" "--remote-debugging-port" "38055" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofile3AgcTS"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1707209257304	Marionette	INFO	Marionette enabled
+1707209257505	Marionette	INFO	Listening on port 40875
+Read port: 40875
+WebDriver BiDi listening on ws://127.0.0.1:38055
+1707209257546	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.error: ({})
+DevTools listening on ws://127.0.0.1:38055/devtools/browser/1dd9e2ab-5d67-45c9-b739-492ee3562dff
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.esic.in."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.esic.in."
+JavaScript warning: https://www.esic.in/InsuranceGlobalWebV3/ESICInsurancePortal/logoutjquery.min.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript error: https://www.esic.in/InsuranceGlobalWebV3/RevenueOne/Monthly%20Contribution/MonthlyContributionHome.aspx?userPk=WMoSpjgJ/2mESaSQP7EOKp+15Y1mmmfB, line 47: ReferenceError: getdate is not defined
+JavaScript error: https://www.esic.in/InsuranceGlobalWebV3/RevenueOne/Monthly%20Contribution/MonthlyContributionHome.aspx?userPk=WMoSpjgJ/2mESaSQP7EOKp+15Y1mmmfB, line 512: TypeError: Range.setStartBefore: Argument 1 is not an object.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.esic.in."
+JavaScript error: https://www.esic.in/InsuranceGlobalWebV3/RevenueOne/Monthly%20Contribution/suppliMonthlyContribution.aspx?ContributionPeriod=ZynJeTcIcHMGmt1r3m5R9g==&EmployerCode=WMoSpjgJ/2mESaSQP7EOKp+15Y1mmmfB&ContributionType=UNRF86AauDI=, line 333: TypeError: Range.setStartBefore: Argument 1 is not an object.
+JavaScript error: https://www.esic.in/InsuranceGlobalWebV3/App_Themes/JS/esic.js, line 117: ReferenceError: godate is not defined
+JavaScript error: https://www.esic.in/InsuranceGlobalWebV3/RevenueOne/Monthly%20Contribution/suppliMonthlyContribution.aspx?ContributionPeriod=ZynJeTcIcHMGmt1r3m5R9g%3d%3d&EmployerCode=WMoSpjgJ%2f2mESaSQP7EOKp+15Y1mmmfB&ContributionType=UNRF86AauDI%3d, line 334: TypeError: Range.setStartBefore: Argument 1 is not an object.
+JavaScript error: https://www.esic.in/InsuranceGlobalWebV3/RevenueOne/Monthly%20Contribution/suppliMonthlyContribution.aspx?ContributionPeriod=ZynJeTcIcHMGmt1r3m5R9g%3d%3d&EmployerCode=WMoSpjgJ%2f2mESaSQP7EOKp+15Y1mmmfB&ContributionType=UNRF86AauDI%3d, line 333: TypeError: Range.setStartBefore: Argument 1 is not an object.
+JavaScript error: https://www.esic.in/InsuranceGlobalWebV3/App_Themes/JS/esic.js, line 117: ReferenceError: godate is not defined
+1707209287330	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'DevToolsFrame'
+JavaScript error: https://esic.gov.in/js/bootstrap.js, line 2: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://esic.gov.in/js/bootstrap.min.js, line 1: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://esic.gov.in/js/jquery.bxslider.js, line 1333: ReferenceError: jQuery is not defined
+JavaScript error: https://esic.gov.in/js/jquery.bxslider.min.js, line 1: ReferenceError: jQuery is not defined
+JavaScript error: https://esic.gov.in/js/jquery.indySliceSlider.js, line 327: ReferenceError: jQuery is not defined
+JavaScript error: https://esic.gov.in/js/custom.js, line 6: SyntaxError: function statement requires a name
+JavaScript error: https://esic.gov.in/, line 891: TypeError: span is undefined
+JavaScript error: https://esic.gov.in/js/bootstrap.js, line 9: Error: Bootstrap's JavaScript requires jQuery version 1.9.1 or higher, but lower than version 3
+JavaScript error: https://esic.gov.in/, line 905: TypeError: modal is null
+JavaScript error: resource://gre/modules/XULStore.sys.mjs, line 60: Error: Can't find profile directory.
+1707210786181	Marionette	INFO	Stopped listening on port 40875

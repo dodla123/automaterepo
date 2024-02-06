@@ -1,0 +1,23 @@
+1707203363340	geckodriver	INFO	Listening on 127.0.0.1:58203
+1707203363854	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/usr ... te" "--remote-debugging-port" "34103" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileEhQNf4"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1707203364230	Marionette	INFO	Marionette enabled
+1707203364439	Marionette	INFO	Listening on port 34911
+WebDriver BiDi listening on ws://127.0.0.1:34103
+Read port: 34911
+1707203364521	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.error: ({})
+DevTools listening on ws://127.0.0.1:34103/devtools/browser/dc97c4b5-3f9b-40b3-8b72-fbd485d51daa
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.esic.in."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.esic.in."
+JavaScript warning: https://www.esic.in/InsuranceGlobalWebV3/ESICInsurancePortal/logoutjquery.min.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript error: https://www.esic.in/InsuranceGlobalWebV3/RevenueOne/Monthly%20Contribution/MonthlyContributionHome.aspx?userPk=WMoSpjgJ/2mESaSQP7EOKp+15Y1mmmfB, line 47: ReferenceError: getdate is not defined
+JavaScript error: https://www.esic.in/InsuranceGlobalWebV3/RevenueOne/Monthly%20Contribution/MonthlyContributionHome.aspx?userPk=WMoSpjgJ/2mESaSQP7EOKp+15Y1mmmfB, line 512: TypeError: Range.setStartBefore: Argument 1 is not an object.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.esic.in."
+JavaScript error: https://www.esic.in/InsuranceGlobalWebV3/RevenueOne/Monthly%20Contribution/suppliMonthlyContribution.aspx?ContributionPeriod=ZynJeTcIcHMGmt1r3m5R9g==&EmployerCode=WMoSpjgJ/2mESaSQP7EOKp+15Y1mmmfB&ContributionType=UNRF86AauDI=, line 333: TypeError: Range.setStartBefore: Argument 1 is not an object.
+JavaScript error: https://www.esic.in/InsuranceGlobalWebV3/App_Themes/JS/esic.js, line 117: ReferenceError: godate is not defined
+JavaScript error: https://www.esic.in/InsuranceGlobalWebV3/RevenueOne/Monthly%20Contribution/suppliMonthlyContribution.aspx?ContributionPeriod=ZynJeTcIcHMGmt1r3m5R9g%3d%3d&EmployerCode=WMoSpjgJ%2f2mESaSQP7EOKp+15Y1mmmfB&ContributionType=UNRF86AauDI%3d, line 334: TypeError: Range.setStartBefore: Argument 1 is not an object.
+JavaScript error: https://www.esic.in/InsuranceGlobalWebV3/App_Themes/JS/esic.js, line 117: ReferenceError: godate is not defined
+1707203394250	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+1707203671028	Marionette	INFO	Stopped listening on port 34911

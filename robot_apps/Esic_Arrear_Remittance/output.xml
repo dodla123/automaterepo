@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.6 on linux)" generated="20240206 14:43:09.752" rpa="false" schemaversion="4">
+<suite id="s1" name="Supplyment" source="/home/buzzadmin/Documents/ESIC_BOT/login/robot_apps/Esic_Arrear_Remittance/supplyment.robot">
+<test id="s1-t1" name="Run Login Process Loop" line="64">
+<kw name="Run Python Script">
+<var>${username}</var>
+<var>${password}</var>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${PYTHON_PATH}</arg>
+<arg>credentials.py</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20240206 14:43:09.913" level="INFO">Starting process:
+python3 credentials.py</msg>
+<msg timestamp="20240206 14:43:09.916" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20240206 14:43:10.328" level="INFO">Process completed.</msg>
+<msg timestamp="20240206 14:43:10.328" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20240206 14:43:09.913" endtime="20240206 14:43:10.328"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${output}</var>
+<arg>${result.stdout.strip()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240206 14:43:10.329" level="INFO">${output} = 51000855590001015, chen@123
+53510855590011001, bang@123
+35510855590011001, mumb@123
+52510855590011015, Telangan@123
+56510855590011015, coim@123
+47510855590011015, kera@123
+67510855590011015, noid@123
+...</msg>
+<status status="PASS" starttime="20240206 14:43:10.329" endtime="20240206 14:43:10.329"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${username}</var>
+<arg>${output.split(',')[0].strip()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240206 14:43:10.329" level="INFO">${username} = 51000855590001015</msg>
+<status status="PASS" starttime="20240206 14:43:10.329" endtime="20240206 14:43:10.329"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${password}</var>
+<arg>${output.split()[1].strip()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240206 14:43:10.330" level="INFO">${password} = chen@123</msg>
+<status status="PASS" starttime="20240206 14:43:10.329" endtime="20240206 14:43:10.330"/>
+</kw>
+<msg timestamp="20240206 14:43:10.330" level="INFO">${username} = 51000855590001015</msg>
+<msg timestamp="20240206 14:43:10.330" level="INFO">${password} = chen@123</msg>
+<status status="PASS" starttime="20240206 14:43:09.913" endtime="20240206 14:43:10.330"/>
+</kw>
+<kw name="Run Python Script for data">
+<var>${IP_Number}</var>
+<var>${No_of_Days}</var>
+<var>${Amount}</var>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${PYTHON_PATH}</arg>
+<arg>Data_from_excel.py</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20240206 14:43:10.330" level="INFO">Starting process:
+python3 Data_from_excel.py</msg>
+<msg timestamp="20240206 14:43:10.332" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20240206 14:43:10.605" level="INFO">Process completed.</msg>
+<msg timestamp="20240206 14:43:10.605" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20240206 14:43:10.330" endtime="20240206 14:43:10.605"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${output}</var>
+<arg>${result.stdout.strip()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240206 14:43:10.606" level="INFO">${output} = 5130349320,0,0
+5133394969,0,0
+5133607220,27,9462
+5133764006,0,0
+5212992472,0,0
+5516029317,0,0
+5516047086,0,0
+5516058442,29,13012
+5516058443,27,12156
+5516089891,0,0
+5516101700,0,0
+5516101705,31,13976
+5...</msg>
+<status status="PASS" starttime="20240206 14:43:10.606" endtime="20240206 14:43:10.606"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${IP_Number}</var>
+<arg>${output.split(',')[0].strip()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240206 14:43:10.606" level="INFO">${IP_Number} = 5130349320</msg>
+<status status="PASS" starttime="20240206 14:43:10.606" endtime="20240206 14:43:10.606"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${No_of_Days}</var>
+<arg>${output.split(',')[1].strip()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240206 14:43:10.607" level="INFO">${No_of_Days} = 0</msg>
+<status status="PASS" starttime="20240206 14:43:10.606" endtime="20240206 14:43:10.607"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Amount}</var>
+<arg>${output.split()[2].strip()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240206 14:43:10.607" level="INFO">${Amount} = 5133607220,27,9462</msg>
+<status status="PASS" starttime="20240206 14:43:10.607" endtime="20240206 14:43:10.607"/>
+</kw>
+<msg timestamp="20240206 14:43:10.607" level="INFO">${IP_Number} = 5130349320</msg>
+<msg timestamp="20240206 14:43:10.607" level="INFO">${No_of_Days} = 0</msg>
+<msg timestamp="20240206 14:43:10.607" level="INFO">${Amount} = 5133607220,27,9462</msg>
+<status status="PASS" starttime="20240206 14:43:10.330" endtime="20240206 14:43:10.607"/>
+</kw>
+<kw name="Open Browser" library="RPA.Browser.Selenium">
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240206 14:43:10.608" level="INFO">Opening browser 'firefox' to base url 'https://www.esic.in/EmployerPortal/ESICInsurancePortal/Portal_Loginnew.aspx'.</msg>
+<status status="PASS" starttime="20240206 14:43:10.607" endtime="20240206 14:43:13.850"/>
+</kw>
+<kw name="Maximize Browser Window" library="RPA.Browser.Selenium">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20240206 14:43:13.850" endtime="20240206 14:43:14.129"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${attempt}</var>
+<value>${MAX_LOGIN_ATTEMPTS}</value>
+<iter>
+<var name="${attempt}">0</var>
+<kw name="Login Process">
+<var>${current_url}</var>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<kw name="Wait Until Element Is Visible" library="RPA.Browser.Selenium">
+<arg>id=txtUserName</arg>
+<arg>timeout=30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240206 14:43:14.130" endtime="20240206 14:43:14.152"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>id=txtUserName</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240206 14:43:14.152" level="INFO">Typing text '51000855590001015' into text field 'id=txtUserName'.</msg>
+<status status="PASS" starttime="20240206 14:43:14.152" endtime="20240206 14:43:14.198"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20240206 14:43:15.198" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20240206 14:43:14.198" endtime="20240206 14:43:15.198"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${username}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240206 14:43:15.199" level="INFO">51000855590001015</msg>
+<status status="PASS" starttime="20240206 14:43:15.198" endtime="20240206 14:43:15.199"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="RPA.Browser.Selenium">
+<arg>id=txtPassword</arg>
+<arg>timeout=30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240206 14:43:15.199" endtime="20240206 14:43:15.211"/>
+</kw>
+<kw name="Input Password" library="RPA.Browser.Selenium">
+<arg>id=txtPassword</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20240206 14:43:15.211" level="INFO">Typing password into text field 'id=txtPassword'.</msg>
+<msg timestamp="20240206 14:43:15.218" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20240206 14:43:15.228" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20240206 14:43:15.211" endtime="20240206 14:43:15.228"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20240206 14:43:16.229" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20240206 14:43:15.229" endtime="20240206 14:43:16.229"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${password}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240206 14:43:16.230" level="INFO">chen@123</msg>
+<status status="PASS" starttime="20240206 14:43:16.230" endtime="20240206 14:43:16.230"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="RPA.Browser.Selenium">
+<arg>xpath=//*[@id='img1']</arg>
+<arg>timeout=30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240206 14:43:16.230" endtime="20240206 14:43:16.250"/>
+</kw>
+<kw name="Capture Element Screenshot" library="RPA.Browser.Selenium">
+<arg>xpath=//*[@id='img1']</arg>
+<arg>${SCREENSHOT_FILE}</arg>
+<doc>Captures a screenshot from the element identified by ``locator`` and embeds it into log file.</doc>
+<msg timestamp="20240206 14:43:16.259" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshot.png"&gt;&lt;img src="screenshot.png" width="400px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20240206 14:43:16.250" endtime="20240206 14:43:16.259"/>
+</kw>
+<kw name="Run Process" library="Process">
+<var>${text_from_python_script}</var>
+<arg>${PYTHON_PATH}</arg>
+<arg>extract_text.py</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20240206 14:43:16.259" level="INFO">Starting process:
+python3 extract_text.py</msg>
+<msg timestamp="20240206 14:43:16.262" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20240206 14:43:16.378" level="INFO">Process completed.</msg>
+<msg timestamp="20240206 14:43:16.378" level="INFO">${text_from_python_script} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20240206 14:43:16.259" endtime="20240206 14:43:16.378"/>
+</kw>
+<kw name="Get File" library="OperatingSystem">
+<var>${file_content}</var>
+<arg>${CAPTCH_TEXT_FILE}</arg>
+<doc>Returns the contents of a specified file.</doc>
+<msg timestamp="20240206 14:43:16.378" level="INFO" html="true">Getting file '&lt;a href="file:///home/buzzadmin/Documents/ESIC_BOT/login/robot_apps/Esic_Arrear_Remittance/cleaned_text.txt"&gt;/home/buzzadmin/Documents/ESIC_BOT/login/robot_apps/Esic_Arrear_Remittance/cleaned_text.txt&lt;/a&gt;'.</msg>
+<msg timestamp="20240206 14:43:16.378" level="INFO">${file_content} = 1ace0</msg>
+<status status="PASS" starttime="20240206 14:43:16.378" endtime="20240206 14:43:16.378"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>File Content: ${file_content}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240206 14:43:16.379" level="INFO">File Content: 1ace0</msg>
+<status status="PASS" starttime="20240206 14:43:16.379" endtime="20240206 14:43:16.379"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>id=txtChallanCaptcha</arg>
+<arg>${file_content}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240206 14:43:16.379" level="INFO">Typing text '1ace0' into text field 'id=txtChallanCaptcha'.</msg>
+<status status="PASS" starttime="20240206 14:43:16.379" endtime="20240206 14:43:16.388"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>xpath://*[@id="btnLogin"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240206 14:43:16.388" level="INFO">Clicking button 'xpath://*[@id="btnLogin"]'.</msg>
+<status status="PASS" starttime="20240206 14:43:16.388" endtime="20240206 14:43:17.425"/>
+</kw>
+<kw name="Get Location" library="RPA.Browser.Selenium">
+<var>${current_url}</var>
+<doc>Returns the current browser window URL.</doc>
+<msg timestamp="20240206 14:43:17.427" level="INFO">${current_url} = https://www.esic.in/InsuranceGlobalWebV3/ESICInsurancePortal/PortalHome.aspx?UserName=WMoSpjgJ/2mESaSQP7EOKp+15Y1mmmfB&amp;lupk=lgRNVnExd59gbWkZpREoGA==&amp;to=&amp;ipaddress=p9mQoiHg84x8rh0vgALicQ==</msg>
+<status status="PASS" starttime="20240206 14:43:17.425" endtime="20240206 14:43:17.427"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Current URL: ${current_url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240206 14:43:17.427" level="INFO">Current URL: https://www.esic.in/InsuranceGlobalWebV3/ESICInsurancePortal/PortalHome.aspx?UserName=WMoSpjgJ/2mESaSQP7EOKp+15Y1mmmfB&amp;lupk=lgRNVnExd59gbWkZpREoGA==&amp;to=&amp;ipaddress=p9mQoiHg84x8rh0vgALicQ==</msg>
+<status status="PASS" starttime="20240206 14:43:17.427" endtime="20240206 14:43:17.427"/>
+</kw>
+<msg timestamp="20240206 14:43:17.427" level="INFO">${current_url} = https://www.esic.in/InsuranceGlobalWebV3/ESICInsurancePortal/PortalHome.aspx?UserName=WMoSpjgJ/2mESaSQP7EOKp+15Y1mmmfB&amp;lupk=lgRNVnExd59gbWkZpREoGA==&amp;to=&amp;ipaddress=p9mQoiHg84x8rh0vgALicQ==</msg>
+<status status="PASS" starttime="20240206 14:43:14.129" endtime="20240206 14:43:17.427"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${current_url}' == 'https://www.esic.in/EmployerPortal/ESICInsurancePortal/Portal_Loginnew.aspx'</arg>
+<arg>Log</arg>
+<arg>Login attempt ${attempt + 1} failed. Retrying...</arg>
+<arg>ELSE</arg>
+<arg>Log</arg>
+<arg>Login successful. Exiting the loop.</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Log" library="BuiltIn">
+<arg>Login successful. Exiting the loop.</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240206 14:43:17.427" level="INFO">Login successful. Exiting the loop.</msg>
+<status status="PASS" starttime="20240206 14:43:17.427" endtime="20240206 14:43:17.427"/>
+</kw>
+<status status="PASS" starttime="20240206 14:43:17.427" endtime="20240206 14:43:17.427"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${current_url}' != 'https://www.esic.in/EmployerPortal/ESICInsurancePortal/Portal_Loginnew.aspx'</arg>
+<arg>Exit For Loop</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Exit For Loop" library="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<msg timestamp="20240206 14:43:17.427" level="INFO">Exiting for loop altogether.</msg>
+<status status="PASS" starttime="20240206 14:43:17.427" endtime="20240206 14:43:17.428"/>
+</kw>
+<status status="PASS" starttime="20240206 14:43:17.427" endtime="20240206 14:43:17.428"/>
+</kw>
+<status status="PASS" starttime="20240206 14:43:14.129" endtime="20240206 14:43:17.428"/>
+</iter>
+<status status="PASS" starttime="20240206 14:43:14.129" endtime="20240206 14:43:17.428"/>
+</for>
+<kw name="Click Element If Visible" library="RPA.Browser.Selenium">
+<var>${div1_close_visible}</var>
+<arg>xpath://*[@id="div1_close"]</arg>
+<doc>Click element if it is visible</doc>
+<msg timestamp="20240206 14:43:17.439" level="INFO">Element 'xpath://*[@id="div1_close"]' is displayed.</msg>
+<msg timestamp="20240206 14:43:17.439" level="INFO">Clicking element 'xpath://*[@id="div1_close"]'.</msg>
+<msg timestamp="20240206 14:43:17.656" level="INFO">${div1_close_visible} = None</msg>
+<status status="PASS" starttime="20240206 14:43:17.428" endtime="20240206 14:43:17.656"/>
+</kw>
+<kw name="Click Element If Visible" library="RPA.Browser.Selenium">
+<var>${btnpnlSanjeevanicolse_visible}</var>
+<arg>xpath://*[@id="btnpnlSanjeevanicolse"]</arg>
+<doc>Click element if it is visible</doc>
+<msg timestamp="20240206 14:43:17.676" level="INFO">Element 'xpath://*[@id="btnpnlSanjeevanicolse"]' is displayed.</msg>
+<msg timestamp="20240206 14:43:17.676" level="INFO">Clicking element 'xpath://*[@id="btnpnlSanjeevanicolse"]'.</msg>
+<msg timestamp="20240206 14:43:17.888" level="INFO">${btnpnlSanjeevanicolse_visible} = None</msg>
+<status status="PASS" starttime="20240206 14:43:17.656" endtime="20240206 14:43:17.888"/>
+</kw>
+<kw name="Click Element If Visible" library="RPA.Browser.Selenium">
+<var>${btnpnlcolse_visible}</var>
+<arg>xpath://*[@id="btnpnlcolse"]</arg>
+<doc>Click element if it is visible</doc>
+<msg timestamp="20240206 14:43:17.909" level="INFO">Element 'xpath://*[@id="btnpnlcolse"]' is displayed.</msg>
+<msg timestamp="20240206 14:43:17.910" level="INFO">Clicking element 'xpath://*[@id="btnpnlcolse"]'.</msg>
+<msg timestamp="20240206 14:43:18.122" level="INFO">${btnpnlcolse_visible} = None</msg>
+<status status="PASS" starttime="20240206 14:43:17.889" endtime="20240206 14:43:18.122"/>
+</kw>
+<kw name="Click Element If Visible" library="RPA.Browser.Selenium">
+<var>${btnpnlPwdcolse_visible}</var>
+<arg>xpath://*[@id="btnpnlPwdcolse"]</arg>
+<doc>Click element if it is visible</doc>
+<msg timestamp="20240206 14:43:18.134" level="INFO">Element 'xpath://*[@id="btnpnlPwdcolse"]' is displayed.</msg>
+<msg timestamp="20240206 14:43:18.134" level="INFO">Clicking element 'xpath://*[@id="btnpnlPwdcolse"]'.</msg>
+<msg timestamp="20240206 14:43:18.345" level="INFO">${btnpnlPwdcolse_visible} = None</msg>
+<status status="PASS" starttime="20240206 14:43:18.123" endtime="20240206 14:43:18.345"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${div1_close_visible}' == 'True'</arg>
+<arg>Click Button</arg>
+<arg>xpath://*[@id="div1_close"]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240206 14:43:18.345" endtime="20240206 14:43:18.346"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${btnpnlSanjeevanicolse_visible}' == 'True'</arg>
+<arg>Click Button</arg>
+<arg>xpath://*[@id="btnpnlSanjeevanicolse"]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240206 14:43:18.346" endtime="20240206 14:43:18.347"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${btnpnlcolse_visible}' == 'True'</arg>
+<arg>Click Button</arg>
+<arg>xpath://*[@id="btnpnlcolse"]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240206 14:43:18.347" endtime="20240206 14:43:18.347"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${btnpnlPwdcolse_visible}' == 'True'</arg>
+<arg>Click Button</arg>
+<arg>xpath://*[@id="btnpnlPwdcolse"]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240206 14:43:18.347" endtime="20240206 14:43:18.348"/>
+</kw>
+<kw name="Click Element If Visible" library="RPA.Browser.Selenium">
+<arg>id=lnkMonthlyContribution</arg>
+<doc>Click element if it is visible</doc>
+<msg timestamp="20240206 14:43:18.362" level="INFO">Element 'id=lnkMonthlyContribution' is displayed.</msg>
+<msg timestamp="20240206 14:43:18.362" level="INFO">Clicking element 'id=lnkMonthlyContribution'.</msg>
+<status status="PASS" starttime="20240206 14:43:18.348" endtime="20240206 14:43:18.480"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20240206 14:43:23.480" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20240206 14:43:18.480" endtime="20240206 14:43:23.480"/>
+</kw>
+<kw name="Get Window Handles" library="RPA.Browser.Selenium">
+<doc>Returns all child window handles of the selected browser as a list.</doc>
+<status status="PASS" starttime="20240206 14:43:23.481" endtime="20240206 14:43:23.486"/>
+</kw>
+<kw name="Press Keys" library="RPA.Desktop">
+<arg>ENTER</arg>
+<doc>Press multiple keys down simultaneously.</doc>
+<msg timestamp="20240206 14:43:23.487" level="INFO">Pressing keys: Key.enter</msg>
+<status status="PASS" starttime="20240206 14:43:23.486" endtime="20240206 14:43:23.490"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20240206 14:43:25.491" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20240206 14:43:23.490" endtime="20240206 14:43:25.491"/>
+</kw>
+<kw name="Switch To Another New Window">
+<kw name="Get Window Handles" library="RPA.Browser.Selenium">
+<var>${window_handles}</var>
+<doc>Returns all child window handles of the selected browser as a list.</doc>
+<msg timestamp="20240206 14:43:25.497" level="INFO">${window_handles} = ['d040ae68-2ab6-4825-9ca0-13927266446e', '8166a16f-a737-4213-88ea-b0a5d1d88032']</msg>
+<status status="PASS" starttime="20240206 14:43:25.492" endtime="20240206 14:43:25.497"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${new_window_index}</var>
+<arg>len(${window_handles}) - 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20240206 14:43:25.498" level="INFO">${new_window_index} = 1</msg>
+<status status="PASS" starttime="20240206 14:43:25.498" endtime="20240206 14:43:25.498"/>
+</kw>
+<kw name="Switch Window" library="RPA.Browser.Selenium">
+<arg>${window_handles}[${new_window_index}]</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20240206 14:43:25.498" endtime="20240206 14:43:25.525"/>
+</kw>
+<status status="PASS" starttime="20240206 14:43:25.492" endtime="20240206 14:43:25.525"/>
+</kw>
+<kw name="Click Element" library="RPA.Browser.Selenium">
+<arg>xpath://*[@id="ctl00_HomePageContent_CtrlDdlMcMonth"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240206 14:43:25.525" level="INFO">Clicking element 'xpath://*[@id="ctl00_HomePageContent_CtrlDdlMcMonth"]'.</msg>
+<status status="PASS" starttime="20240206 14:43:25.525" endtime="20240206 14:43:25.771"/>
+</kw>
+<kw name="Click Element" library="RPA.Browser.Selenium">
+<arg>xpath:/html/body/form/div[3]/table[2]/tbody/tr[2]/td/div/table[2]/tbody/tr/td/div/table[1]/tbody/tr[3]/td[2]/select[1]/option[13]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240206 14:43:25.773" level="INFO">Clicking element 'xpath:/html/body/form/div[3]/table[2]/tbody/tr[2]/td/div/table[2]/tbody/tr/td/div/table[1]/tbody/tr[3]/td[2]/select[1]/option[13]'.</msg>
+<status status="PASS" starttime="20240206 14:43:25.772" endtime="20240206 14:43:25.990"/>
+</kw>
+<kw name="Click Element" library="RPA.Browser.Selenium">
+<arg>xpath://*[@id="ctl00_HomePageContent_CtrlDdlMcYear"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240206 14:43:25.992" level="INFO">Clicking element 'xpath://*[@id="ctl00_HomePageContent_CtrlDdlMcYear"]'.</msg>
+<status status="PASS" starttime="20240206 14:43:25.991" endtime="20240206 14:43:26.225"/>
+</kw>
+<kw name="Click Element" library="RPA.Browser.Selenium">
+<arg>xpath:/html/body/form/div[3]/table[2]/tbody/tr[2]/td/div/table[2]/tbody/tr/td/div/table[1]/tbody/tr[3]/td[2]/select[2]/option[3]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240206 14:43:26.226" level="INFO">Clicking element 'xpath:/html/body/form/div[3]/table[2]/tbody/tr[2]/td/div/table[2]/tbody/tr/td/div/table[1]/tbody/tr[3]/td[2]/select[2]/option[3]'.</msg>
+<status status="PASS" starttime="20240206 14:43:26.225" endtime="20240206 14:43:26.447"/>
+</kw>
+<kw name="Click Element" library="RPA.Browser.Selenium">
+<arg>xpath://*[@id="ctl00_HomePageContent_CtrlDdlMcType"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240206 14:43:26.449" level="INFO">Clicking element 'xpath://*[@id="ctl00_HomePageContent_CtrlDdlMcType"]'.</msg>
+<status status="PASS" starttime="20240206 14:43:26.448" endtime="20240206 14:43:26.678"/>
+</kw>
+<kw name="Click Element" library="RPA.Browser.Selenium">
+<arg>xpath:/html/body/form/div[3]/table[2]/tbody/tr[2]/td/div/table[2]/tbody/tr/td/div/table[1]/tbody/tr[4]/td[2]/select/option[3]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240206 14:43:26.680" level="INFO">Clicking element 'xpath:/html/body/form/div[3]/table[2]/tbody/tr[2]/td/div/table[2]/tbody/tr/td/div/table[1]/tbody/tr[4]/td[2]/select/option[3]'.</msg>
+<status status="PASS" starttime="20240206 14:43:26.679" endtime="20240206 14:43:26.911"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="RPA.Browser.Selenium">
+<arg>xpath://*[@id="ctl00_HomePageContent_CtrlDDTpyOfWgs"]</arg>
+<arg>timeout=30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240206 14:43:26.911" endtime="20240206 14:43:27.351"/>
+</kw>
+<kw name="Click Element" library="RPA.Browser.Selenium">
+<arg>xpath://*[@id="ctl00_HomePageContent_CtrlDDTpyOfWgs"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240206 14:43:27.351" level="INFO">Clicking element 'xpath://*[@id="ctl00_HomePageContent_CtrlDDTpyOfWgs"]'.</msg>
+<status status="PASS" starttime="20240206 14:43:27.351" endtime="20240206 14:43:27.574"/>
+</kw>
+<kw name="Click Element" library="RPA.Browser.Selenium">
+<arg>xpath:/html/body/form/div[3]/table[2]/tbody/tr[2]/td/div/table[2]/tbody/tr/td/div/table[1]/tbody/tr[6]/td[2]/select/option[2]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240206 14:43:27.575" level="INFO">Clicking element 'xpath:/html/body/form/div[3]/table[2]/tbody/tr[2]/td/div/table[2]/tbody/tr/td/div/table[1]/tbody/tr[6]/td[2]/select/option[2]'.</msg>
+<status status="PASS" starttime="20240206 14:43:27.574" endtime="20240206 14:43:27.792"/>
+</kw>
+<kw name="Click Button" library="RPA.Browser.Selenium">
+<arg>xpath://*[@id="ctl00_HomePageContent_CtrlBtnSubmit"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240206 14:43:27.793" level="INFO">Clicking button 'xpath://*[@id="ctl00_HomePageContent_CtrlBtnSubmit"]'.</msg>
+<status status="PASS" starttime="20240206 14:43:27.792" endtime="20240206 14:43:29.262"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>id=ctl00_HomePageContent_CtrlGrdVwSuppMc_ctl02_CtrlTxtBxIpNo</arg>
+<arg>${IP_Number}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240206 14:43:29.263" level="INFO">Typing text '5130349320' into text field 'id=ctl00_HomePageContent_CtrlGrdVwSuppMc_ctl02_CtrlTxtBxIpNo'.</msg>
+<status status="PASS" starttime="20240206 14:43:29.262" endtime="20240206 14:43:29.292"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20240206 14:43:30.292" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20240206 14:43:29.292" endtime="20240206 14:43:30.292"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>id=ctl00_HomePageContent_CtrlGrdVwSuppMc_ctl02_CtrlTxtBxNoDaysWokd</arg>
+<arg>${No_of_Days}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240206 14:43:30.294" level="INFO">Typing text '0' into text field 'id=ctl00_HomePageContent_CtrlGrdVwSuppMc_ctl02_CtrlTxtBxNoDaysWokd'.</msg>
+<status status="PASS" starttime="20240206 14:43:30.293" endtime="20240206 14:43:30.313"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20240206 14:43:31.313" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20240206 14:43:30.313" endtime="20240206 14:43:31.314"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>id=ctl00_HomePageContent_CtrlGrdVwSuppMc_ctl02_CtrlTxtBxTotMnthlyWgs</arg>
+<arg>${Amount}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240206 14:43:31.315" level="INFO">Typing text '5133607220,27,9462' into text field 'id=ctl00_HomePageContent_CtrlGrdVwSuppMc_ctl02_CtrlTxtBxTotMnthlyWgs'.</msg>
+<status status="PASS" starttime="20240206 14:43:31.314" endtime="20240206 14:43:31.356"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20240206 14:43:32.357" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20240206 14:43:31.357" endtime="20240206 14:43:32.357"/>
+</kw>
+<status status="PASS" starttime="20240206 14:43:09.913" endtime="20240206 14:43:32.357"/>
+</test>
+<status status="PASS" starttime="20240206 14:43:09.753" endtime="20240206 14:43:32.358"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Supplyment">Supplyment</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
