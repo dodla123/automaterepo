@@ -17,7 +17,7 @@ Library    RPA.Email.ImapSmtp
 *** Variables ***
 ${TEMP_DIRECTORY_PATH}        /home/buzzadmin/Documents/ESIC_BOT/login/robot_apps/ESIC_Temp_Card/
 ${DOWNLOAD_PATH}              /home/buzzadmin/Downloads/
-${API_URL}                    http://10.12.0.90/epf-cap-predict/
+${API_URL}                    http://10.12.0.168/epf-cap-predict/
 ${SHEET_NAME}                 Sheet1
 ${username}                   admindemo      
 ${password}                   admindemo
@@ -70,7 +70,7 @@ Login Process Loop
     Log    File Content: ${file_content} 
     Input Text    id=txtChallanCaptcha     ${file_content}
     Wait Until Element Is Visible    xpath://*[@id="btnLogin"]    timeout=90s
-    Click Button    xpath://*[@id="btnLogin"]    # Assuming this is the login button09:41:53 AM
+    Click Button    xpath://*[@id="btnLogin"]    # Assuming this is the login button
     Sleep    5s
     ${current_url}=    Get Location
     Log    Current URL: ${current_url}
@@ -200,7 +200,7 @@ Enter ESIC No and DOJ
 
 Condition for Personal details for YES
 
-    Wait Until Element Is Visible    //input[@id="ctl00_HomePageContent_rdPersonalDetails" and @type='radio']    timeout=300s             # Address detail open link
+    Wait Until Element Is Visible    //input[@id="ctl00_HomePageContent_rdPersonalDetails" and @type='radio']    timeout=300s            # Address detail open link
     Click Element    //input[@id="ctl00_HomePageContent_rdPersonalDetails" and @type='radio']
     Sleep    2s
 
@@ -271,7 +271,7 @@ Updating the Bank Details for YES
 
     # Run Keyword If    '${element_disabled}'=='False'    Click Element    id=ctl00_HomePageContent_rdPersonalDetails
 
-    Run Keyword If    '${element_disabled_P}'=='False'    Condition for Upadation of Personal Address    # Click the link if it's enabled
+    Run Keyword If    '${element_disabled_P}'=='False'    Condition for Upadation of Personal Address                                        # Click the link if it's enabled
     Run Keyword If    '${element_disabled_B}'=='False'    Condition for Upadation of Bank Details    ${row}       
 
     Wait Until Element Is Visible    //input[@id="ctl00_HomePageContent_ctrlButtonSave" and @value='Update']     timeout=300s                # Update button
