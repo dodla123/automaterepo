@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.6 on linux)" generated="20240517 10:16:07.194" rpa="false" schemaversion="4">
+<suite id="s1" name="SAP" source="/home/buzzadmin/Documents/ESIC_BOT/login/robot_apps/Attendance_Data_Extraction_SAP/SAP.robot">
+<test id="s1-t1" name="Launching the SAP website" line="73">
+<kw name="Open SAP website">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>https://www.fieldglass.net/</arg>
+<arg>chrome</arg>
+<arg>options=add_experimental_option("detach", True)</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240517 10:16:07.280" level="INFO">Opening browser 'chrome' to base url 'https://www.fieldglass.net/'.</msg>
+<status status="PASS" starttime="20240517 10:16:07.280" endtime="20240517 10:16:13.759"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20240517 10:16:13.760" endtime="20240517 10:16:13.868"/>
+</kw>
+<status status="PASS" starttime="20240517 10:16:07.279" endtime="20240517 10:16:13.868"/>
+</kw>
+<status status="PASS" starttime="20240517 10:16:07.279" endtime="20240517 10:16:13.869"/>
+</test>
+<test id="s1-t2" name="Logging into the website" line="76">
+<kw name="Login Process">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//input[@id="usernameId_new"]</arg>
+<arg>timeout=30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240517 10:16:13.872" endtime="20240517 10:16:13.915"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>//input[@id="usernameId_new"]</arg>
+<arg>${username}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20240517 10:16:13.916" level="INFO">Typing password into text field '//input[@id="usernameId_new"]'.</msg>
+<msg timestamp="20240517 10:16:13.952" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20240517 10:16:13.975" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20240517 10:16:13.915" endtime="20240517 10:16:13.975"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20240517 10:16:14.976" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20240517 10:16:13.975" endtime="20240517 10:16:14.976"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//input[@id="passwordId_new"]</arg>
+<arg>timeout=30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240517 10:16:14.977" endtime="20240517 10:16:15.015"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>//input[@id="passwordId_new"]</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20240517 10:16:15.016" level="INFO">Typing password into text field '//input[@id="passwordId_new"]'.</msg>
+<msg timestamp="20240517 10:16:15.054" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20240517 10:16:15.109" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20240517 10:16:15.015" endtime="20240517 10:16:15.109"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20240517 10:16:16.110" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20240517 10:16:15.109" endtime="20240517 10:16:16.110"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//button[@class="formLoginButton_new"]</arg>
+<arg>timeout=30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240517 10:16:16.110" endtime="20240517 10:16:16.141"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>//button[@class="formLoginButton_new"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240517 10:16:16.142" level="INFO">Clicking button '//button[@class="formLoginButton_new"]'.</msg>
+<status status="PASS" starttime="20240517 10:16:16.141" endtime="20240517 10:16:23.230"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20240517 10:16:24.231" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20240517 10:16:23.230" endtime="20240517 10:16:24.231"/>
+</kw>
+<status status="PASS" starttime="20240517 10:16:13.871" endtime="20240517 10:16:24.232"/>
+</kw>
+<kw name="Click Analytic and all reports">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//li[@id="viewMenu_2_analytics_header_link"]</arg>
+<arg>timeout=30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240517 10:16:24.233" endtime="20240517 10:16:24.266"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//li[@id="viewMenu_2_analytics_header_link"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240517 10:16:24.266" level="INFO">Clicking element '//li[@id="viewMenu_2_analytics_header_link"]'.</msg>
+<status status="PASS" starttime="20240517 10:16:24.266" endtime="20240517 10:16:24.310"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//li[@id="analyticsMenu_1_viewNewReportGraph_link"]</arg>
+<arg>timeout=30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240517 10:16:24.311" endtime="20240517 10:16:24.327"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//li[@id="analyticsMenu_1_viewNewReportGraph_link"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240517 10:16:24.327" level="INFO">Clicking element '//li[@id="analyticsMenu_1_viewNewReportGraph_link"]'.</msg>
+<status status="PASS" starttime="20240517 10:16:24.327" endtime="20240517 10:16:47.890"/>
+</kw>
+<status status="PASS" starttime="20240517 10:16:24.232" endtime="20240517 10:16:47.890"/>
+</kw>
+<status status="PASS" starttime="20240517 10:16:13.870" endtime="20240517 10:16:47.891"/>
+</test>
+<test id="s1-t3" name="Passing the criteria" line="80">
+<kw name="Entering the fields">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//div[@id="report_list_view"]//input[@tabindex='6']</arg>
+<arg>timeout=30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240517 10:16:47.891" endtime="20240517 10:16:47.909"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>//div[@id="report_list_view"]//input[@tabindex='6']</arg>
+<arg>${input_text}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240517 10:16:47.909" level="INFO">Typing text 'Invoice Details' into text field '//div[@id="report_list_view"]//input[@tabindex='6']'.</msg>
+<status status="PASS" starttime="20240517 10:16:47.909" endtime="20240517 10:16:47.986"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20240517 10:16:48.987" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20240517 10:16:47.987" endtime="20240517 10:16:48.987"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//form[@id="reportListViewForm"]//input[@value='Apply Filters']</arg>
+<arg>timeout=30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240517 10:16:48.988" endtime="20240517 10:16:49.018"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>//form[@id="reportListViewForm"]//input[@value='Apply Filters']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240517 10:16:49.019" level="INFO">Clicking button '//form[@id="reportListViewForm"]//input[@value='Apply Filters']'.</msg>
+<status status="PASS" starttime="20240517 10:16:49.018" endtime="20240517 10:16:49.070"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//a[contains(text(),'Invoice details Supplier')]</arg>
+<arg>timeout=120s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240517 10:16:49.070" endtime="20240517 10:16:57.759"/>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>//a[contains(text(),'${href_text}')]</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20240517 10:16:57.759" level="INFO">Clicking link '//a[contains(text(),'Invoice details Supplier')]'.</msg>
+<status status="PASS" starttime="20240517 10:16:57.759" endtime="20240517 10:17:06.486"/>
+</kw>
+<kw name="Get Current Date" library="DateTime">
+<var>${current_date}</var>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<msg timestamp="20240517 10:17:06.487" level="INFO">${current_date} = 2024-05-17 10:17:06.487</msg>
+<status status="PASS" starttime="20240517 10:17:06.486" endtime="20240517 10:17:06.487"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Current Date: ${current_date}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240517 10:17:06.487" level="INFO">Current Date: 2024-05-17 10:17:06.487</msg>
+<status status="PASS" starttime="20240517 10:17:06.487" endtime="20240517 10:17:06.487"/>
+</kw>
+<kw name="Convert Date" library="DateTime">
+<var>${new_date}</var>
+<arg>${current_date}</arg>
+<arg>result_format=%d/%m/%Y</arg>
+<doc>Converts between supported `date formats`.</doc>
+<msg timestamp="20240517 10:17:06.490" level="INFO">${new_date} = 17/05/2024</msg>
+<status status="PASS" starttime="20240517 10:17:06.487" endtime="20240517 10:17:06.490"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>New Date: ${new_date}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240517 10:17:06.490" level="INFO">New Date: 17/05/2024</msg>
+<status status="PASS" starttime="20240517 10:17:06.490" endtime="20240517 10:17:06.490"/>
+</kw>
+<kw name="Split String" library="String">
+<var>${result}</var>
+<arg>${new_date}</arg>
+<arg>separator=/</arg>
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<msg timestamp="20240517 10:17:06.490" level="INFO">${result} = ['17', '05', '2024']</msg>
+<status status="PASS" starttime="20240517 10:17:06.490" endtime="20240517 10:17:06.490"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Result: ${result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240517 10:17:06.491" level="INFO">Result: ['17', '05', '2024']</msg>
+<status status="PASS" starttime="20240517 10:17:06.490" endtime="20240517 10:17:06.491"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${day}</var>
+<arg>02</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240517 10:17:06.491" level="INFO">${day} = 02</msg>
+<status status="PASS" starttime="20240517 10:17:06.491" endtime="20240517 10:17:06.491"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${month}</var>
+<arg>${result}[1]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240517 10:17:06.491" level="INFO">${month} = 05</msg>
+<status status="PASS" starttime="20240517 10:17:06.491" endtime="20240517 10:17:06.491"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${year}</var>
+<arg>${result}[2]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240517 10:17:06.491" level="INFO">${year} = 2024</msg>
+<status status="PASS" starttime="20240517 10:17:06.491" endtime="20240517 10:17:06.491"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${date}</var>
+<arg>${day}/${month}/${year}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240517 10:17:06.492" level="INFO">${date} = 02/05/2024</msg>
+<status status="PASS" starttime="20240517 10:17:06.491" endtime="20240517 10:17:06.492"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//input[@id="colEndDate_z2101270738121928603792c" and @type='text']</arg>
+<arg>timeout=30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240517 10:17:06.492" endtime="20240517 10:17:06.520"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>//input[@id="colEndDate_z2101270738121928603792c" and @type='text']</arg>
+<arg>${date}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240517 10:17:06.520" level="INFO">Typing text '02/05/2024' into text field '//input[@id="colEndDate_z2101270738121928603792c" and @type='text']'.</msg>
+<status status="PASS" starttime="20240517 10:17:06.520" endtime="20240517 10:17:06.609"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20240517 10:17:07.609" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20240517 10:17:06.609" endtime="20240517 10:17:07.610"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//input[@id="runReport" and @value='Run']</arg>
+<arg>timeout=30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240517 10:17:07.610" endtime="20240517 10:17:07.647"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>//input[@id="runReport" and @value='Run']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240517 10:17:07.647" level="INFO">Clicking button '//input[@id="runReport" and @value='Run']'.</msg>
+<status status="PASS" starttime="20240517 10:17:07.647" endtime="20240517 10:17:11.380"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>15m</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20240517 10:32:11.381" level="INFO">Slept 15 minutes</msg>
+<status status="PASS" starttime="20240517 10:17:11.380" endtime="20240517 10:32:11.381"/>
+</kw>
+<status status="PASS" starttime="20240517 10:16:47.891" endtime="20240517 10:32:11.382"/>
+</kw>
+<status status="PASS" starttime="20240517 10:16:47.891" endtime="20240517 10:32:11.382"/>
+</test>
+<status status="PASS" starttime="20240517 10:16:07.195" endtime="20240517 10:32:11.384"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="3" fail="0" skip="0" id="s1" name="SAP">SAP</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
