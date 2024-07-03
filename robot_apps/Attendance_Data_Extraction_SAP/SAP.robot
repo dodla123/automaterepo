@@ -2,12 +2,27 @@
 Library        SeleniumLibrary
 Library        DateTime
 Library        String
+Library        Process
+Library        RPA.Email.ImapSmtp
+Library        data_removal.py
 
 *** Variables ***
-${username}            Venkat2838
-${password}            Buzz@2025
-${input_text}          Invoice Details
-${href_text}           Invoice details Supplier
+${username}                Venkat2838
+${password}                Buzz@2025
+${input_text}              Invoice Details
+${href_text}               Invoice Details
+${input_file_path}         /home/buzzadmin/Downloads/Invoice_Details.xlsx
+${output_file_path}        /home/buzzadmin/Desktop/Invoice_Details.xlsx 
+
+${EMAIL_SERVER}            smtp.gmail.com
+${EMAIL_PORT}              587
+${EMAIL_USERNAME}          dodla.manasa@buzzworks.com
+${EMAIL_PASSWORD}          dytr ruja nwck tqwh
+${EMAIL_SENDER}            dodla.manasa@buzzworks.com
+${TAGGED_EMAIL}            shashwat.b@buzzworks.com     #lakshmi.l@buzzworks.com    #venkatasubbu@buzzworks.com    #bandari.akhil@buzzworks.com
+# ${ATTACHMENTS}                ${TEMP_DIRECTORY_PATH}Pending_data.xlsx
+${SUBJECT}                 Modified_Excel_File
+# ${BODY}                        Hi Compliance Team, please go through the attached Challan No whose Challan number is generated.
 
 *** Keywords ***
 Click Element When Visible
@@ -47,8 +62,12 @@ Entering the fields
     Wait Until Element Is Visible    //form[@id="reportListViewForm"]//input[@value='Apply Filters']    timeout=30s
     Click Button    //form[@id="reportListViewForm"]//input[@value='Apply Filters']   
 
-    Wait Until Element Is Visible    //a[contains(text(),'Invoice details Supplier')]    timeout=120s
+    Wait Until Element Is Visible    //a[contains(text(),'${href_text}')]    timeout=120s
     Click Link    //a[contains(text(),'${href_text}')]
+
+    Input Text    //input[@id="tpcolEndHours_z1810252005480140504292f" and @type='text']    12:00 AM
+    # Click Element    //input[@id="tpcolEndHours_z1810252005480140504292f" and @type='text']
+    Sleep    1s
 
     ${current_date}=    Get Current Date
     Log    Current Date: ${current_date}
@@ -56,18 +75,32 @@ Entering the fields
     Log    New Date: ${new_date}
     ${result}=    Split String    ${new_date}    separator=/
     Log    Result: ${result}
-    ${day}=    Set Variable    02
+    ${day}=    Set Variable    03
     ${month}=    Set Variable    ${result}[1]
     ${year}=    Set Variable    ${result}[2]
     ${date}=    Set Variable    ${day}/${month}/${year}
 
-    Wait Until Element Is Visible    //input[@id="colEndDate_z2101270738121928603792c" and @type='text']    timeout=30s
-    Input Text    //input[@id="colEndDate_z2101270738121928603792c" and @type='text']    ${date}
+    Wait Until Element Is Visible    //input[@id="colEndDate_z1810252005480140504292f" and @type='text']    timeout=30s
+    Click Element    //input[@id="colEndDate_z1810252005480140504292f" and @type='text']
+    Input Text    //input[@id="colEndDate_z1810252005480140504292f" and @type='text']    ${date}
+    # Input Text    //input[@id="colEndDate_z1810252005480140504292f"]    ${date}
     Sleep    1s
 
     Wait Until Element Is Visible    //input[@id="runReport" and @value='Run']    timeout=30s
     Click Button    //input[@id="runReport" and @value='Run']
     Sleep    15m
+
+Process Invoice Details
+    [Arguments]    ${input_file_path}    ${output_file_path}
+    ${result}=    Run Keyword    data_removal.process_invoice_details    ${input_file_path}    ${output_file_path}
+    [Return]    ${output_file_path}
+
+Process Invoice Details and Send Email
+    ${output_file_path}=    Process Invoice Details    ${input_file_path}    ${output_file_path}
+    ${email_body}=    Set Variable    Hi Team, please go through the attached Modified_Excel_File which is generated.
+    Authorize SMTP    ${EMAIL_USERNAME}    ${EMAIL_PASSWORD}    ${EMAIL_SERVER}    ${EMAIL_PORT}
+    Send Message    ${EMAIL_SENDER}    ${TAGGED_EMAIL}    ${SUBJECT}    ${email_body}    attachments=${output_file_path}        
+
 
 *** Test Cases ***
 Launching the SAP website
@@ -79,3 +112,9 @@ Logging into the website
 
 Passing the criteria    
     Entering the fields
+
+Deleting the unwanted data    
+    Process Invoice Details    ${input_file_path}    ${output_file_path}
+
+Sending Email
+    Process Invoice Details and Send Email    
