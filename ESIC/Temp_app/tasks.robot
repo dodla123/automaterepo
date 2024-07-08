@@ -17,23 +17,24 @@ Library    RPA.Email.ImapSmtp
 
 
 *** Variables ***
-${SCREENSHOT_FILE}            /home/buzzadmin/Desktop/Django_Esic_Temp/ESIC/Temp_app/screenshot.png
-${CAPTCH_TEXT_FILE}           /home/buzzadmin/Desktop/Django_Esic_Temp/ESIC/cleaned_text.txt  
-${API_URL}                    http://10.12.0.87/epf-cap-predict/
+${SCREENSHOT_FILE}            /home/buzzadmin/Desktop/Django_Esic_Temp_DB_API/ESIC/Temp_app/screenshot.png
+${CAPTCH_TEXT_FILE}           /home/buzzadmin/Desktop/Django_Esic_Temp_DB_API/ESIC/cleaned_text.txt  
+${API_URL}                    http://10.12.0.68/epf-cap-predict/
 ${BASE_URL}                   http://localhost:8000
 ${insert_user_data}           ${BASE_URL}/api/insert_user_data/
+${send_an_email}              ${BASE_URL}/api/send_an_email/
 # {EXCEL_FILE_PATH}
-${screenshot}                 /home/buzzadmin/Desktop/Django_Esic_Temp/ESIC/Temp_app
+${screenshot}                 /home/buzzadmin/Desktop/Django_Esic_Temp_DB_API/ESIC/Temp_app
 ${DOWNLOAD_PATH}              /home/buzzadmin/Downloads
-${DOWNLOAD_FOLDER}            /home/buzzadmin/Desktop/Django_Esic_Temp/ESIC/Temp_app/Downloaded_Temp_cards
-${EMAIL_SERVER}               smtp.gmail.com
-${EMAIL_PORT}                 587
-${EMAIL_USERNAME}             dodla.manasa@buzzworks.com
-${EMAIL_PASSWORD}             dytr ruja nwck tqwh
-${EMAIL_SENDER}               dodla.manasa@buzzworks.com
-${TAGGED_EMAIL}               ravikumar@buzzworks.com    #lakshmi.l@buzzworks.com    #shashwat.b@buzzworks.com      #bandari.akhil@buzzworks.com     
-${ATTACHMENTS}                Pending_data.xlsx
-${SUBJECT}                    Tagged Cases
+${DOWNLOAD_FOLDER}            /home/buzzadmin/Desktop/Django_Esic_Temp_DB_API/ESIC/Temp_app/Downloaded_Temp_cards
+# ${EMAIL_SERVER}               smtp.gmail.com
+# ${EMAIL_PORT}                 587
+# ${EMAIL_USERNAME}             dodla.manasa@buzzworks.com
+# ${EMAIL_PASSWORD}             dytr ruja nwck tqwh
+# ${EMAIL_SENDER}               dodla.manasa@buzzworks.com
+# ${TAGGED_EMAIL}               ravikumar@buzzworks.com            #ravikumar@buzzworks.com    #lakshmi.l@buzzworks.com    #shashwat.b@buzzworks.com      #bandari.akhil@buzzworks.com     
+# ${ATTACHMENTS}                Pending_data.xlsx
+# ${SUBJECT}                    Tagged Cases
 # ${BODY}                       Hi Compliance Team, please go through the attached entries who's mobile number is Already Tagged.
 ${login_credentials_data}     ${EMPTY}
 ${validated_temp_data}        ${EMPTY}
@@ -80,24 +81,32 @@ Login Process Loop
 
 Run captcha loop
     [Arguments]    ${user}    ${pswd}
-    FOR    ${attempt}    IN RANGE    10
+    ${current_url}=    Set Variable    https://www.esic.in/EmployerPortal/ESICInsurancePortal/Portal_Loginnew.aspx
+    WHILE    '${current_url}' == 'https://www.esic.in/EmployerPortal/ESICInsurancePortal/Portal_Loginnew.aspx'
         ${current_url}=    Login Process Loop    ${user}    ${pswd}
-        Run Keyword If    '${current_url}' == 'https://www.esic.in/EmployerPortal/ESICInsurancePortal/Portal_Loginnew.aspx'    Log    Login attempt ${attempt + 1} failed. Retrying...
-        ...    ELSE    Log    Login successful. Exiting the loop.
-        Run Keyword If    '${current_url}' != 'https://www.esic.in/EmployerPortal/ESICInsurancePortal/Portal_Loginnew.aspx'    Exit For Loop
-    END     
+        Run Keyword If    '${current_url}' == 'https://www.esic.in/EmployerPortal/ESICInsurancePortal/Portal_Loginnew.aspx'    Log    Login attempt failed. Retrying...
+    Log    Login successful. Exiting the loop.
+    END
+
+    # [Arguments]    ${user}    ${pswd}
+    # FOR    ${attempt}    IN RANGE    10
+    #     ${current_url}=    Login Process Loop    ${user}    ${pswd}
+    #     Run Keyword If    '${current_url}' == 'https://www.esic.in/EmployerPortal/ESICInsurancePortal/Portal_Loginnew.aspx'    Log    Login attempt ${attempt + 1} failed. Retrying...
+    #     ...    ELSE    Log    Login successful. Exiting the loop.
+    #     Run Keyword If    '${current_url}' != 'https://www.esic.in/EmployerPortal/ESICInsurancePortal/Portal_Loginnew.aspx'    Exit For Loop
+    # END     
 
 Fetch username based on location 
-    [Arguments]  ${temp}    
+    [Arguments]    ${temp}    
     Log    its a match
     ${location_username}=    Set Variable    ${temp}[user_name]
-    [Return]        ${location_username}    
+    [Return]    ${location_username}    
 
 Fetch password based on location 
-    [Arguments]  ${temp}    
+    [Arguments]    ${temp}    
     Log    its a match
     ${location_password}=    Set Variable    ${temp}[password] 
-    [Return]        ${location_password} 
+    [Return]    ${location_password} 
 
 Switch To Another New Window
     ${window_handles}=    Get Window Handles
@@ -135,17 +144,6 @@ Post User Data            # For pushing data into database
     ${response}=    RPA.HTTP.POST On Session    UserSession    ${insert_user_data}    json=${data}    headers=${headers}
     Log    ${response}
     Sleep    5s  
-
-Post User Data for Updation           # For pushing data into database
-    [Arguments]    ${hoppr_id}    ${name}    ${status}    ${remarks}    ${time}   
-    RPA.HTTP.Create Session    UserSession    http://localhost:8000
-    ${data}=    Create Dictionary    hoppr_id=${hoppr_id}    name=${name}    status=${status}    remarks=${remarks}    time=${time}       
-    Log    ${data}
-    ${headers}=    Create Dictionary    Content-Type=application/json
-    Log    ${headers}
-    ${response}=    RPA.HTTP.POST On Session    UserSession    ${insert_user_data}    json=${data}    headers=${headers}
-    Log    ${response}
-    Sleep    5s    
 
 Calculate Time Difference
     [Arguments]    ${end_time}    ${start_time}
@@ -540,7 +538,7 @@ Condition for filling Permanent Address in Emp Reg
     ${Address_length}=    Get Length    ${Permanent_Address}
     Log    ${Address_length}
 
-    IF    $Address_length < 50
+    IF    $Address_length <= 50
         Run Keyword    Address1 Permanant    ${NumGen}
     END
 
@@ -1046,6 +1044,7 @@ Condition for Bank if IFSC not found
 Condition if Already Tagged in ESIC No
     [Arguments]    ${START_TIME}    ${NumGen}    ${hoppr_id}    ${name}    ${status}    ${remarks}    ${time}    ${END_TIME}         
     Log    ${START_TIME}
+    Log    ${NumGen}
 
     ${hoppr_id}=    Set Variable    ${NumGen}[hoppr_id]    
     ${name}=        Set Variable    ${NumGen}[name] 
@@ -1144,7 +1143,7 @@ Enter ESIC No and DOJ
     Sleep    2s
 
 Click Continue Button for ESIC No
-    [Arguments]    ${NumGen}   
+    [Arguments]    ${START_TIME}    ${NumGen}   
     
     Wait Until Element Is Visible    //input[@id="ctl00_HomePageContent_btnContinue"]    timeout=300s
     Click Element    //input[@id="ctl00_HomePageContent_btnContinue"] 
@@ -1205,10 +1204,10 @@ Get Login Credentials from Database
                     Click Continue Button
                     
                     IF    '${NumGen}[esic_no]' != 'None'
-                        ${START_TIME}=    Get Current Date    result_format=%H:%M:%S
+                        # ${START_TIME}=    Get Current Date    result_format=%H:%M:%S
                         Click ESIC Number Yes
                         Enter ESIC No and DOJ    ${NumGen}
-                        Click Continue Button for ESIC No    ${NumGen}             
+                        Click Continue Button for ESIC No    ${START_TIME}    ${NumGen}             
                     
                     ELSE   
                         
@@ -1249,5 +1248,12 @@ Get Login Credentials from Database
         END  
     END
 
+# Sending Am Email
+#     Log    sending an email
+#     RPA.HTTP.Create Session    UserSession    http://localhost:8000
+#     ${response}=    RPA.HTTP.POST On Session    UserSession    ${send_an_email}    
+#     Log    ${response}
+#     Sleep    5s  
+    
 
 
