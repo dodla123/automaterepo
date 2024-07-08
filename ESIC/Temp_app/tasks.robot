@@ -1248,12 +1248,12 @@ Get Login Credentials from Database
         END  
     END
 
-# Sending Am Email
-#     Log    sending an email
-#     RPA.HTTP.Create Session    UserSession    http://localhost:8000
-#     ${response}=    RPA.HTTP.POST On Session    UserSession    ${send_an_email}    
-#     Log    ${response}
-#     Sleep    5s  
+Sending Am Email
+    Log    sending an email
+    RPA.HTTP.Create Session    UserSession    http://localhost:8000
+    ${response}=    RPA.HTTP.POST On Session    UserSession    ${send_an_email}    
+    Log    ${response}
+    Sleep    5s  
     
 
 
