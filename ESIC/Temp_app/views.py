@@ -1,5 +1,7 @@
 from django.http import JsonResponse
 from django.views import View
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
@@ -16,24 +18,23 @@ import json
 import subprocess
 import threading
 import pandas as pd
-import datetime
 import os
 
 
 @method_decorator(csrf_exempt, name='dispatch')
 class RetrieveEsicDataView(View):
     def post(self, request, *args, **kwargs):
+        
         # Fetch credentials data from the table
         esic_credentials_data = esic_credentials_table.objects.all()
         credentials_data = self.prepare_credentials_data(esic_credentials_data)
         
         # Fetch and validate temp data
         esic_temp_data = esic_temp_input_table.objects.filter(status=None)
-        print("  esic_temp_data",  esic_temp_data)
+        # print("  esic_temp_data",  esic_temp_data)
         validated_temp_rows, invalid_temp_rows = self.validate_esic_temp_data(esic_temp_data)
         validated_temp_data = self.prepare_temp_data(validated_temp_rows)
-        print("validated_temp_data ",validated_temp_data )
-        
+        # print("validated_temp_data ",validated_temp_data )
         
         # Run the bot in a separate thread
         threading.Thread(target=self.run_bot, args=(validated_temp_data, credentials_data)).start()
@@ -52,9 +53,6 @@ class RetrieveEsicDataView(View):
                 'locations': instance.locations,
                 'user_name': instance.user_name,
                 'password': instance.password,
-                # Add other fields as needed...
-                # Convert date fields to string if they exist
-                # 'some_date_field': instance.some_date_field.strftime('%Y-%m-%d') if instance.some_date_field else None,
             })
         return login_credentials_data
 
@@ -68,7 +66,6 @@ class RetrieveEsicDataView(View):
                 errors.append('Name is required')
             if not instance.mobile_number:
                 errors.append('Mobile Number is required')
-            # Continue with other validations as needed...
             
             if errors:
                 invalid_rows.append({'instance': instance, 'errors': errors})
@@ -80,6 +77,9 @@ class RetrieveEsicDataView(View):
     # user input data table
     def prepare_temp_data(self, queryset):
         user_validated_data = []
+        pending_data = False
+        
+        # Process each instance and update the status
         for instance in queryset:
             user_validated_data.append({
                 'hoppr_id': instance.hoppr_id,
@@ -115,17 +115,17 @@ class RetrieveEsicDataView(View):
                 # 'created_date': instance.created_date.strftime('%Y-%m-%d') if instance.created_date else None,
                 'status': instance.status,
                 # 'remarks': instance.remarks,
-                # Add other fields as needed...
             })
+
         return user_validated_data
-    
+
     # Code for running the robot code(bot)
     def run_bot(self, validated_temp_data, credentials_data):
-        robot_path = "/home/buzzadmin/Desktop/Django_Esic_Temp/ESIC/Temp_app/tasks.robot"
+        robot_path = "/home/buzzadmin/Desktop/Django_Esic_Temp_DB_API/ESIC/Temp_app/tasks.robot"
         
         # Create a timestamped output directory
-        timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
-        output_directory = f"/home/buzzadmin/Desktop/Django_Esic_Temp/ESIC/Temp_app/output/{timestamp}"
+        timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+        output_directory = f"/home/buzzadmin/Desktop/Django_Esic_Temp_DB_API/ESIC/Temp_app/output/{timestamp}"
         
         # Create the output directory if it doesn't exist
         os.makedirs(output_directory, exist_ok=True)
@@ -136,6 +136,7 @@ class RetrieveEsicDataView(View):
         try:
             command = [
                 'robot',
+                '--exitonfailure',
                 '--variable', f'login_credentials_data:{login_credentials_data_json}',
                 '--variable', f'validated_temp_data:{validated_temp_data_json}',
                 '--outputdir', output_directory,
@@ -156,6 +157,7 @@ class RetrieveEsicDataView(View):
         except Exception as e:
             print("An error occurred during the execution:", str(e))
             print("Error occurred while processing the following data:")
+
 
 # updating the fields to the database(output table)
 class InsertUserData(APIView):
@@ -219,44 +221,45 @@ class InsertUserData(APIView):
 
         return Response(status=status.HTTP_200_OK)
     
+class SendAnEmail(APIView):
+    def post(self,*args, **kwargs):
+        current_date = datetime.now().date().strftime('%Y-%m-%d')
+        print(current_date)
+        # Fetching data from DB based on status==Pending
+        esic_pending_data = list(esic_temp_output_table.objects.filter(status='Pending', created_date=current_date).values())              
+        df = pd.DataFrame(esic_pending_data)  
+        print('Pending_Data_DB',df)
+        
+        # Save data to Excel file
+        file_path = '/home/buzzadmin/Desktop/Django_Esic_Temp_DB_API/ESIC/Temp_app/output.xlsx'
+        df.to_excel(file_path, index=False)
+        print("Data exported to esic_temp_output_table_data.xlsx")
+        
+        # Send email with attachment
+        filename = os.path.basename(file_path)
+        email = EmailMessage(
+            subject='Tagged Cases',
+            body='Hi Compliance Team,\n\nplease go through the attached Excel file for Tagged cases.\n\nThis is an automated email, please do not reply.\n\nThanks & Regards,\nAutomation Team.',
+            from_email='dodla.manasa@buzzworks.com',
+            to=['ravikumar@buzzworks.com']
+        )
+        with open(file_path, 'rb') as f:
+            email.attach(filename, f.read(), 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+        email.send()
+
+
+        print('Email sent successfully!')
+            
+        return Response(status=status.HTTP_200_OK)
 
 
 
 
 
-# def process_and_email_data(request):
-#     # Fetch data from the database where status is 'None'
-#     data = esic_temp_output_table.objects.filter(status=['Success', 'Pending']).values()
-    
-#     # Convert the queryset to a list of dictionaries
-#     data_list = list(data)
-    
-#     # Convert the list of dictionaries to a DataFrame
-#     df = pd.DataFrame(data_list)
-    
-#     # Process the data as needed (use your existing Robot Framework code here)
-#     # ...
-    
-#     # Save the processed data to an Excel file
-#     excel_path = '/home/buzzadmin/Downloads/ESIC_outputdata.xlsx'
-#     df.to_excel(excel_path, index=False)
-    
-#     # Send the Excel file as an email attachment
-#     email = EmailMessage(
-#         'Processed_Data',
-#         'Hi, Compliance Team',
-#         'dodla.manasa@buzzworks.com',
-#         ['dodla.manasa@buzzworks.com']
-#     )
-#     email.attach_file(excel_path)
-#     email.send()
-    
-#     # Clean up the Excel file after sending
-#     os.remove(excel_path)
-    
-#     return HttpResponse('Data processed and sent successfully!')
-    
-    
+
+
+
+
 
 
 
@@ -326,3 +329,41 @@ class InsertUserData(APIView):
 # # Example usage:
 # file_path = '/home/buzzadmin/Downloads/data_dumpping.xlsx'
 # import_data_from_excel(file_path)    
+
+
+# def import_data_from_excel(file_path):
+#     # try:
+#     #################################################################################################
+#     data = pd.read_excel(file_path)
+#     print(data)
+
+#     column_mapping = {
+#         'Locations': 'locations',
+#         'User Name': 'user_name',
+#         'PASSWORD': 'password',
+#     }
+
+#     relevant_data = data[list(column_mapping.keys())]
+#     # date_columns = ["Birth Date", "Date of Joining", "Date of Birth(Family)"]
+#     # for col in date_columns:
+#     #     relevant_data.loc[:, col] = pd.to_datetime(
+#     #         relevant_data[col], format="%Y-%m-%d", errors="coerce"
+#     #     ).dt.strftime("%Y-%m-%d")
+#     for index, row in relevant_data.iterrows():
+#         values_dict = {
+#             column_mapping[column]: row[column] if not pd.isna(row[column]) else None
+#             for column in column_mapping
+#         }
+#         print(values_dict, "=============")
+
+#         esic_credentials_table.objects.create(**values_dict)
+
+
+#     print("Data imported successfully")
+
+
+
+
+# # Example usage:
+# file_path = '/home/buzzadmin/Downloads/Esic Login ID & Pswrd-Buzz.xlsx'
+# import_data_from_excel(file_path)
